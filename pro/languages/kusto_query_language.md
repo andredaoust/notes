@@ -9,7 +9,7 @@
     - [Summarize](#summarize)
     - [Extend](#extend)
     - [Project](#project)
-    - [Distinct  - Kusto Query Language](#distinct---kusto-query-language)
+    - [Distinct](#distinct)
     - [Top](#top)
 
 ## Common Operators
@@ -101,7 +101,7 @@ TableName
 ```
 TableName
 | where TimeGenerated >=ago(1h)
-	And (ColumnA == "test text"
+	    And (ColumnA == "test text"
 		or
 		ColumnB == "this text")
 ```
@@ -112,8 +112,8 @@ Returns all columns that equal "test text" or "this text" from ColumnA or Column
 TableName
 | where TimeGenerated >=ago(1h)
 | where (ColumnA == "test"
-	or 
-	ColumnB == "where")
+	    or 
+	    ColumnB == "where")
 | where columnC < 0
 ```
 
@@ -151,6 +151,8 @@ TableName
 ```
 
 This grabs 10 random rows from the result of the where clause. Limit is most useful during development/testing as you don't have to generate more than N results.
+
+**note**: _Take_ is listed as an alternative to _limit_ but doesn't seem to work in the latest Azure Portal.
 
 
 ### Count  
