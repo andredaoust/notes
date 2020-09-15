@@ -185,7 +185,7 @@ Sums the unique combinations of ColumnA and ColumnB
 ```
 TableName
 | summarize NewColumnNmae = count()
-	by ColumnA, columbB
+	        by ColumnA, columbB
 ```
 
 This allows you to set the name of the sum column that will be generated.
@@ -194,16 +194,16 @@ This allows you to set the name of the sum column that will be generated.
 TableName
 | where ColumnA=="test"
 | summarize NewCountName = count()
-	, otherAvgName = avg(ColumnB)
-	by ColumnA
+	        , otherAvgName = avg(ColumnB)
+	        by ColumnA
 ```
 
-This will rreturn the number of ColumnA entries containing "test" and the average of the associated ColumnB
+This will return the number of ColumnA entries containing "test" and the average of the associated ColumnB
 
 ```
 TableName
 | summarize NumberOfEntries = count()
-	by bin(TimeGenerated, 7d)
+	        by bin(TimeGenerated, 7d)
 ```
 
 bin allows you to summarize into logical groups. The example above groups the count() values by days.
@@ -235,9 +235,9 @@ This will create a new column called ColumnA with the text from ColumnB and colu
 
 ```
 TableName
-| project ColumnA,
-	ColumnB,
-	ColumnC
+| project ColumnA
+	    , ColumnB
+	    , ColumnC
 ```
 
 Shows only ColumnA, ColumnB and ColumnC in the results
@@ -246,13 +246,13 @@ Shows only ColumnA, ColumnB and ColumnC in the results
 TableName
 | where ColumnA == "something"
 | extend FreeGB = SpaceLeft / 1000
-	, FreeMB = SpaceLeft 
-	, FreeKB = SpaceLeft * 1000
+	    , FreeMB = SpaceLeft 
+	    , FreeKB = SpaceLeft * 1000
 | project ColumnB
-	, ColumnC
-	, FreeGB
-	, FreeMB,
-	, FreeKB
+	    , ColumnC
+	    , FreeGB
+	    , FreeMB
+	    , FreeKB
 ```
 
 This gest all the rows where ColumnA is "something" and calculates 3 new columns based off of the SpaceLeft column. It then only shows ColumnB, ColumnC, FreeGB, FreeMB and FreeKB.
@@ -298,12 +298,12 @@ Returns the most recent 20 entries
 ```
 TableName
 | where ColumnA == "test"  //get all test
-	And ColumnB >=ago(1h)  //within the last hour
+	    And ColumnB >=ago(1h)  //within the last hour
 | project ColumnC
-	, ColumnD
-	, ColumnF=ColumnE  //rename inline
+	    , ColumnD
+	    , ColumnF=ColumnE  //rename inline
 | distinct ColumnC
-	, ColumnD
-	, ColumnE
+	    , ColumnD
+	    , ColumnE
 | top 25 by Column E asc
 ```
