@@ -21,6 +21,7 @@ docker pull redis
 ```
 docker run -p 6379:6379 --name=redis redis:latest
 ```
+> this will expose the default port, 6379 and create a container with the name 'redis'.
 
 4. Edit your `.env` file's _Redis__ConnectionString=_ value with:
 
@@ -30,6 +31,7 @@ localhost:6379,ssl=false,abortConnect=false
 
 ### Additional Notes  
 * A useful tool to view/edit the content of a Redis instance is [Redis Desktop Manager](https://redisdesktop.com/).
+* For cleanup, run the following Docker command `docker stop redis && docker rm redis`
 
 ---
 
@@ -46,12 +48,14 @@ docker pull mongo
 ```
 docker run -p 27017:27017 --name=mongo mongo:latest
 ```
+> this will expose the default port, 27017 and create a container with the name 'mongo'.
 4. Edit your `.env` file's _MongoSettings__ConnectionString=_ to :
 ```
 mongodb://localhost:27017/test?retryWrites=true&w=majority
 ```
 ### Additional Notes  
 * A useful GUI tool to manage MongoDB is [Robot3t](https://robomongo.org/download)
+* For cleanup, run the following Docker command `docker stop mongo && docker rm mongo`
 
 ---
 
