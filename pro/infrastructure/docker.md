@@ -10,6 +10,13 @@ Just a small list of commands I've had to lookup or use more than once.
  docker container stop $(docker container list -q)
 ```
 
+## Stop all containers in swarm  
+You can scale down the pods to 0 with:
+```
+docker service scale serviceName=0
+```
+where serviceName is the service you'd like to scale down.  
+
 ## End docker swarm
 ```
 docker swarm leave [OPTIONS]
